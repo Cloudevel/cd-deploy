@@ -23,8 +23,23 @@ npm install -g yarn
 npm install -g ijavascript
 ijsinstall
 
+mkdir $HOME/ide
+cp package.json $HOME/ide/
+cd $HOME/ide/
+yarn
+yarn theia build
+yarn theia download:plugins
+echo "export THEIA_DEFAULT_PLUGINS=local-dir:$HOME/ide/plugins" >> $HOME/.bashrc
+export THEIA_DEFAULT_PLUGINS=local-dir:$HOME/ide/plugins
+
 sudo mkdir /opt/oi
 sudo chown -R oi:oi /opt/oi
+
+echo -e "#! /bin/bash\nsource $HOME/.nvm/nvm.sh\ncd $HOME/ide\nyarn theia start /opt/oi --hostname=0.0.0.0" > $HOME/theia.sh
+chmod +x $HOME/theia.sh
+echo -e "[Unit]\nDescription=Theia IDE\n\n[Service]\nType=simple\nPIDFile=/run/theia.pid\nEnvironment=THEIA_DEFAULT_PLUGINS=local-dir:/home/oi/ide/plugins\nExecStart=/home/oi/theia.sh\nUser=oi\nGroup=oi\nWorkingDirectory=/home/oi/ide/\nRestart=always\nRestartSec=10\n\n[Install]\nWantedBy=multi-user.target" > $HOME/theia.service
+sudo mv $HOME/theia.service /lib/systemd/system/
+sudo systemctl enable theia.service
 
 echo -e "#! /bin/bash\nsource $HOME/.nvm/nvm.sh\njupyter notebook --ip=0.0.0.0 --no-browser" > $HOME/jupyter.sh
 chmod +x $HOME/jupyter.sh
