@@ -3,6 +3,7 @@ sudo apt update
 sudo apt dist-upgrade -y
 sudo apt install apache2 mysql-server php-zip zip php-curl php-mysql tree mc vim libapache2-mod-php python3-dev unzip wget w3m build-essential -y 
 sudo apt purge cloud-init -y 
+sudo apt autoremove -y
 sudo apt clean
 
 wget https://bootstrap.pypa.io/get-pip.py

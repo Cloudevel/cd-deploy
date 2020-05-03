@@ -4,6 +4,7 @@ sudo apt update
 sudo apt dist-upgrade -y
 sudo apt install apache2 mysql-server php-zip zip php-curl php-mysql tree mc vim libapache2-mod-php python3-dev unzip wget w3m build-essential openjdk-11-jdk ant maven -y 
 sudo apt purge cloud-init -y 
+sudo aot autoremove -y
 sudo apt clean
 
 wget https://services.gradle.org/distributions/gradle-6.2.2-bin.zip
@@ -26,7 +27,7 @@ sudo -H python3 install.py
 cd ..
 rm -rf ijava
 jupyter notebook --generate-config
-cp jupyter_notebook_config.json $HOME/.jupyter/
+cp jupyter_notebook_config.* $HOME/.jupyter/
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
@@ -56,7 +57,7 @@ echo -e "[Unit]\nDescription=Theia IDE\n\n[Service]\nType=simple\nPIDFile=/run/t
 sudo mv $HOME/theia.service /lib/systemd/system/
 sudo systemctl enable theia.service
 
-echo -e "#! /bin/bash\nsource $HOME/.nvm/nvm.sh\njupyter notebook --ip=0.0.0.0 --no-browser" > $HOME/jupyter.sh
+echo -e "#! /bin/bash\nsource $HOME/.nvm/nvm.sh\njupyter notebook --no-browser" > $HOME/jupyter.sh
 chmod +x $HOME/jupyter.sh
 echo -e "[Unit]\nDescription=Jupyter Notebook\n\n[Service]\nType=simple\nPIDFile=/run/jupyter.pid\nExecStart=/home/oi/jupyter.sh\nUser=oi\nGroup=oi\nWorkingDirectory=/opt/oi/\nRestart=always\nRestartSec=10\n\n[Install]\nWantedBy=multi-user.target" > jupyter.service
 sudo mv jupyter.service /lib/systemd/system/
