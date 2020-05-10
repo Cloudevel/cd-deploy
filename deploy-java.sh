@@ -2,7 +2,7 @@
 
 sudo apt update 
 sudo apt dist-upgrade -y
-sudo apt install apache2 mysql-server php-zip zip php-curl php-mysql tree mc vim libapache2-mod-php python3-dev unzip wget w3m build-essential openjdk-11-jdk-headless antjunit5 -y 
+sudo apt install apache2 mysql-server php-zip zip php-curl php-mysql tree mc vim libapache2-mod-php python3-dev unzip wget w3m build-essential openjdk-11-jdk-headless ant junit5 -y 
 sudo apt purge cloud-init -y 
 sudo aot autoremove -y
 sudo apt clean
