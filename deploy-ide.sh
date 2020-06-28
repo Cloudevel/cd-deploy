@@ -1,8 +1,8 @@
 #! /bin/bash
 sudo apt update 
 sudo apt dist-upgrade -y
-sudo apt install apache2 mysql-server php-zip zip php-curl php-mysql tree mc vim libapache2-mod-php python3-dev unzip wget w3m build-essential -y 
-sudo apt purge cloud-init -y 
+sudo apt install apache2 mariadb-server curl php-zip zip php-curl php-mysql tree mc vim libapache2-mod-php python3-dev unzip wget w3m build-essential -y 
+# sudo apt purge cloud-init -y 
 sudo apt autoremove -y
 sudo apt clean
 
@@ -48,6 +48,6 @@ echo -e "[Unit]\nDescription=Jupyter Notebook\n\n[Service]\nType=simple\nPIDFile
 sudo mv jupyter.service /lib/systemd/system/
 sudo systemctl enable jupyter.service
 
-sudo mysql -u root -proot -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '0p3n5t4ck';"
+# sudo mysql -u root -proot -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '0p3n5t4ck';"
 wget https://github.com/vrana/adminer/releases/download/v4.7.6/adminer-4.7.6.php
 sudo mv adminer-4.7.6.php /var/www/html/adminer.php
