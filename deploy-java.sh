@@ -2,17 +2,17 @@
 
 sudo apt update 
 sudo apt dist-upgrade -y
-sudo apt install apache2 mysql-server php-zip zip php-curl php-mysql tree mc vim libapache2-mod-php python3-dev unzip wget w3m build-essential openjdk-11-jdk-headless ant junit5 maven  -y 
+sudo apt install apache2 mariadb-server curl php-zip zip php-curl php-mysql tree mc vim libapache2-mod-php python3-dev unzip wget w3m build-essential openjdk-11-jdk-headless ant testng maven  -y 
 sudo apt purge cloud-init -y 
 sudo aot autoremove -y
 sudo apt clean
 
-wget https://services.gradle.org/distributions/gradle-6.2.2-bin.zip
-sudo mkdir /opt/gradle
-sudo unzip -d /opt/gradle gradle-6.2.2-bin.zip
-rm gradle-6.2.2-bin.zip
-export PATH=$PATH:/opt/gradle/gradle-6.2.2/bin
-echo "export PATH=$PATH:/opt/gradle/gradle-6.2.2/bin" >> $HOME/.bashrc
+wget https://services.gradle.org/distributions/gradle-6.5-bin.zip
+sudo unzip gradle-6.5-bin.zip
+rm gradle*.zip
+sudo mv gradle-6.5 /opt/gradle
+export PATH=$PATH:/opt/gradle/gradle/bin
+echo "export PATH=$PATH:/opt/gradle/bin" >> $HOME/.bashrc
 
 wget https://bootstrap.pypa.io/get-pip.py
 sudo -H python3 get-pip.py
@@ -31,8 +31,8 @@ cp jupyter_notebook_config.* $HOME/.jupyter/
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+[-s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[-s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 nvm install 10
 npm install -g yarn
 
@@ -63,6 +63,5 @@ echo -e "[Unit]\nDescription=Jupyter Notebook\n\n[Service]\nType=simple\nPIDFile
 sudo mv jupyter.service /lib/systemd/system/
 sudo systemctl enable jupyter.service
 
-sudo mysql -u root -proot -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '0p3n5t4ck';"
-wget https://github.com/vrana/adminer/releases/download/v4.7.6/adminer-4.7.6.php
-sudo mv adminer-4.7.6.php /var/www/html/adminer.php
+wget https://github.com/vrana/adminer/releases/download/v4.7.7/adminer-4.7.7.php
+sudo mv adminer-4.7.7.php /var/www/html/adminer.php

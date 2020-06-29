@@ -49,5 +49,5 @@ sudo mv jupyter.service /lib/systemd/system/
 sudo systemctl enable jupyter.service
 
 # sudo mysql -u root -proot -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '0p3n5t4ck';"
-wget https://github.com/vrana/adminer/releases/download/v4.7.6/adminer-4.7.6.php
-sudo mv adminer-4.7.6.php /var/www/html/adminer.php
+wget https://github.com/vrana/adminer/releases/download/v4.7.7/adminer-4.7.7.php
+sudo mv adminer-4.7.7.php /var/www/html/adminer.php
