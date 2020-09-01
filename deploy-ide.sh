@@ -1,7 +1,7 @@
 #! /bin/bash
 sudo apt update 
 sudo apt dist-upgrade -y
-sudo apt install apache2 mariadb-server curl php-zip zip php-curl php-mysql tree mc vim libapache2-mod-php python3-distutils unzip wget w3m build-essential -y 
+sudo apt install apache2 mariadb-server curl php-zip zip php-curl php-mysql tree mc vim libapache2-mod-php python3-setuptools unzip wget w3m build-essential -y 
 # sudo apt purge cloud-init -y 
 sudo apt autoremove -y
 sudo apt clean
