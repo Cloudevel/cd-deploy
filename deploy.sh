@@ -27,7 +27,7 @@ cp jupyter_notebook_config.* $HOME/.jupyter/
 sudo mkdir /opt/oi
 sudo chown -R oi:oi /opt/oi
 
-echo -e "#! /bin/bash\nsource $HOME/.nvm/nvm.sh\njupyter notebook --no-browser" > $HOME/jupyter.sh
+echo -e "#! /bin/bash\njupyter notebook --no-browser" > $HOME/jupyter.sh
 chmod +x $HOME/jupyter.sh
 echo -e "[Unit]\nDescription=Jupyter Notebook\n\n[Service]\nType=simple\nPIDFile=/run/jupyter.pid\nExecStart=/home/oi/jupyter.sh\nUser=oi\nGroup=oi\nWorkingDirectory=/opt/oi/\nRestart=always\nRestartSec=10\n\n[Install]\nWantedBy=multi-user.target" > jupyter.service
 sudo mv jupyter.service /lib/systemd/system/
