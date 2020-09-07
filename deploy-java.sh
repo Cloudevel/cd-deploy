@@ -7,10 +7,10 @@ sudo apt purge cloud-init -y
 sudo aot autoremove -y
 sudo apt clean
 
-wget https://services.gradle.org/distributions/gradle-6.5-bin.zip
-sudo unzip gradle-6.5-bin.zip
+wget https://services.gradle.org/distributions/gradle-6.6.1-bin.zip
+sudo unzip gradle-6.6.1-bin.zip
 rm gradle*.zip
-sudo mv gradle-6.5 /opt/gradle
+sudo mv gradle-6.6.1 /opt/gradle
 export PATH=$PATH:/opt/gradle/gradle/bin
 echo "export PATH=$PATH:/opt/gradle/bin" >> $HOME/.bashrc
 
@@ -29,18 +29,18 @@ rm -rf ijava
 jupyter notebook --generate-config
 cp jupyter_notebook_config.* $HOME/.jupyter/
 
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
-[-s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[-s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-nvm install 10
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+nvm install 12
 npm install -g yarn
 
 npm install -g ijavascript
 ijsinstall
 
 mkdir $HOME/ide
-cp package-java.json $HOME/ide/package.json
+cp package.json $HOME/ide/package.json
 cd $HOME/ide/
 yarn
 yarn theia build

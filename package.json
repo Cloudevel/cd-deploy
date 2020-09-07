@@ -1,33 +1,31 @@
 {
-    "private": true,
-    "theia": {
-        "frontend": {
-            "config": {
-                "applicationName": "Theia IDE for Cloudevel",
-                "preferences": {
-                    "files.enableTrash": false
-                }
-            }
-        }
-    },
-    "dependencies": {
-        "@theia/editor-preview": "latest",
-        "@theia/file-search": "latest",
-        "@theia/getting-started": "latest",
-        "@theia/git": "latest",
-        "@theia/json": "latest",
-        "@theia/markers": "latest",
-        "@theia/messages": "latest",
-        "@theia/navigator": "latest",
-        "@theia/outline-view": "latest",
-        "@theia/plugin": "latest",
-        "@theia/plugin-ext": "latest",
-        "@theia/plugin-ext-vscode": "latest",
-        "@theia/preferences": "latest",
-        "@theia/search-in-workspace": "latest",
-        "@theia/terminal": "latest"
-    },
-    "theiaPluginsDir": "plugins",
+  "private": true,
+  "dependencies": {
+    "@theia/callhierarchy": "next",
+    "@theia/file-search": "next",
+    "@theia/git": "next",
+    "@theia/markers": "next",
+    "@theia/messages": "next",
+    "@theia/mini-browser": "next",
+    "@theia/navigator": "next",
+    "@theia/outline-view": "next",
+    "@theia/plugin-ext-vscode": "next",
+    "@theia/preferences": "next",
+    "@theia/preview": "next",
+    "@theia/search-in-workspace": "next",
+    "@theia/terminal": "next"
+  },
+  "devDependencies": {
+    "@theia/cli": "next"
+  },
+  "scripts": {
+    "prepare": "yarn run clean && yarn build && yarn run download:plugins",
+    "clean": "theia clean",
+    "build": "theia build --mode development",
+    "start": "theia start --plugins=local-dir:plugins",
+    "download:plugins": "theia download:plugins"
+  },
+  "theiaPluginsDir": "plugins",
     "theiaPlugins": {
         "vscode-builtin-bat": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/bat-1.39.1-prel.vsix",
         "vscode-builtin-configuration-editing": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/configuration-editing-1.39.1-prel.vsix",
@@ -80,8 +78,5 @@
         "vscode-languageserver-protocol": "3.15.0-next.9",
         "vscode-languageserver-types": "3.15.0-next.5",
         "**/vscode-json-languageserver/**/vscode-languageserver": "6.0.0-next.1"
-    },
-    "devDependencies": {
-        "@theia/cli": "latest"
     }
 }
