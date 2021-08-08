@@ -2,7 +2,7 @@
 
 sudo apt update 
 sudo apt dist-upgrade -y
-sudo apt install apache2 mariadb-server curl php-zip zip php-curl php-mysql tree mc vim libapache2-mod-php python3-setuptools unzip wget w3m build-essential -y 
+sudo apt install apache2 mariadb-server curl php-zip zip php-curl php-mysql libsecret-1-dev libx11-dev libxkbfile-dev tree mc vim libapache2-mod-php python3-setuptools unzip wget w3m build-essential -y 
 sudo apt autoremove -y
 sudo apt clean
 
@@ -46,5 +46,5 @@ chmod +x $HOME/jupyter.sh
 echo -e "[Unit]\nDescription=Jupyter Notebook\n\n[Service]\nType=simple\nPIDFile=/run/jupyter.pid\nExecStart=/home/oi/jupyter.sh\nUser=oi\nGroup=oi\nWorkingDirectory=/opt/oi/\nRestart=always\nRestartSec=10\n\n[Install]\nWantedBy=multi-user.target" > jupyter.service
 sudo mv jupyter.service /lib/systemd/system/
 sudo systemctl enable jupyter.service
-https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php
+wget https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php
 sudo mv adminer-4.8.1.php /var/www/html/adminer.php
