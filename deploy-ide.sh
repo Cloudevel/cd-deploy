@@ -14,10 +14,9 @@ python3 -m bash_kernel.install
 jupyter notebook --generate-config
 cp jupyter_notebook_config.* $HOME/.jupyter/
 
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.38.0/install.sh | bash
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 nvm install 12
 npm install -g yarn
 
@@ -47,6 +46,5 @@ chmod +x $HOME/jupyter.sh
 echo -e "[Unit]\nDescription=Jupyter Notebook\n\n[Service]\nType=simple\nPIDFile=/run/jupyter.pid\nExecStart=/home/oi/jupyter.sh\nUser=oi\nGroup=oi\nWorkingDirectory=/opt/oi/\nRestart=always\nRestartSec=10\n\n[Install]\nWantedBy=multi-user.target" > jupyter.service
 sudo mv jupyter.service /lib/systemd/system/
 sudo systemctl enable jupyter.service
-
-wget https://github.com/vrana/adminer/releases/download/v4.7.7/adminer-4.7.7.php
-sudo mv adminer-4.7.7.php /var/www/html/adminer.php
+https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php
+sudo mv adminer-4.8.1.php /var/www/html/adminer.php
